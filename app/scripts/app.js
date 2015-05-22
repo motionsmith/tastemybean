@@ -27,4 +27,15 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .run(['$window', function($window) {
+    var Parse = $window.Parse;
+
+    Parse.initialize('pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN', 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf');
+
+    var TestObject = Parse.Object.extend('TestObject');
+    var testObject = new TestObject();
+    testObject.save({foo: 'bar'}).then(function() {
+      console.log('yay! it worked');
+    });
+  }]);
