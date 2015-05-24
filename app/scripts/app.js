@@ -14,7 +14,7 @@ angular
     'ngRoute',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -24,18 +24,18 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  })
-  .run(['$window', function($window) {
-    var Parse = $window.Parse;
-
-    Parse.initialize('pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN', 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf');
-
-    var TestObject = Parse.Object.extend('TestObject');
-    var testObject = new TestObject();
-    testObject.save({foo: 'bar'}).then(function() {
-      console.log('yay! it worked');
-    });
+  }])
+  .run(['parse', function(parse) {
+    parse.initialize('pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN', 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf');
   }]);
