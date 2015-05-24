@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "app-name": "tastemybean",
+    "architecture": false,
+    "styles-language": "sass"
+  }
+}
