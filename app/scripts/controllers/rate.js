@@ -9,14 +9,19 @@
  */
 angular.module('tastemybeanApp')
   .controller('RateCtrl', ['$scope', 'Rating', 'Recipe', '$routeParams', function ($scope, Rating, Recipe, $routeParams) {
-  	function onRating() {
-  		
-  	}
+  	
+    $scope.onSubmit = function() {
+      $scope.rating.results[0].rating_value++;
+    };
 
-  	function onRecipe() {
-  		console.log('got recipe' + $scope.recipe);
-  	}
-  	$scope.rating = Rating.mineForRecipe(onRating);
-  	$scope.recipe = Recipe.getOne({id: $routeParams.recipeId}, onRecipe);
-  	$scope.recipeId = $routeParams.recipeId;
+    $scope.onCancel = function() {
+
+    };
+
+    $scope.onUnrate = function() {
+
+    };
+
+  	$scope.rating = Rating.myRatingOfRecipe($routeParams.recipeId);
+  	$scope.recipe = Recipe.getOne({id: $routeParams.recipeId});
   }]);

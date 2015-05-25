@@ -8,7 +8,7 @@
  * Factory in the tastemybeanApp.
  */
 angular.module('tastemybeanApp')
-  .factory('Rating', ['$resource', 'parse', '$routeParams', function ($resource, parse, $routeParams) {
+  .factory('Rating', ['$resource', 'parse', function ($resource, parse) {
     var actions = {
       mine: {
         method: 'get',
@@ -19,17 +19,32 @@ angular.module('tastemybeanApp')
         },
         headers: parse.authHeaders
       },
-      mineForRecipe: {
+      query: {
         method: 'get',
-        params: {
-          where: JSON.stringify({
-            author: parse.pointerFor(parse.User.current()),
-            recipe: parse.pointerFor('recipe', $routeParams.recipeId)
-          })
-        },
         headers: parse.authHeaders
       }
     };
-    
-    return $resource(parse.apiUrl + 'classes/rating/', {}, actions);
+
+    function whereRecipeIs (recipeId) {
+      return {
+        include: 'recipe',
+        order: 'createdAt',
+        where: JSON.stringify({
+          author: parse.pointerFor(parse.User.current()),
+          recipe: parse.pointerFor('recipe', recipeId)
+        })
+      };
+    }
+
+    var resource = $resource(parse.apiUrl + 'classes/rating/', {}, actions);
+    resource.myRatingOfRecipe = function(recipeId) {
+      var args = [];
+      for (var i = 1; i < arguments.length; i++) {
+        args[i] = arguments[i];
+      }
+      var t = whereRecipeIs(recipeId);
+      return this.query(t);
+    };
+
+    return resource;
   }]);

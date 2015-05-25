@@ -11,13 +11,23 @@ angular.module('tastemybeanApp')
     return {
       templateUrl: 'templates/rater.html',
       scope: {
-      	rateChanged: '=',
+      	rateChanged: '&',
       	value: '='
       },
       replace: true,
       restrict: 'E',
-      link: function postLink() {
-        
+      link: function postLink(scope) {
+        scope.$watch('value', function() {
+          //Redraw rating widget.
+          console.log('redraw rating widget to ' + scope.value);
+        });
+
+        scope.onRatingClick = function(index) {
+          if (index !== scope.value) {
+            console.log('rating changed via directive to ' + index);
+            scope.value = index;
+          }
+        };
       }
     };
   });

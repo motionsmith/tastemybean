@@ -1,19 +1,21 @@
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\000031}}
 .rater {
   margin: 0px auto 16px auto;
+  width: 272px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\000035}}
 .rater .rating-icon {
-  margin: 0 3px;
+  margin: 0 8px;
   width: 40px;
   height: 35px;
   display: inline-block;
+  cursor: pointer;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\0000311}}
 .rater .rating-icon:first-child {
   margin-left: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\0000314}}
 .rater .rating-icon:last-child {
   margin-right: 0;
 }
