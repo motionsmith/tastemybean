@@ -18,8 +18,16 @@ angular.module('tastemybeanApp')
           order: 'code'
   			},
         headers: parse.authHeaders
-  		}
+  		},
+      getOne: {
+        method: 'get',
+        url: parse.apiUrl + 'classes/recipe/:id',
+        params: {
+          include: 'brew_method,coffee_brand'
+        },
+        headers: parse.authHeaders
+      }
   	};
   	
-    return $resource(parse.apiUrl + '/classes/recipe/', {}, actions);
+    return $resource(parse.apiUrl + 'classes/recipe/', {}, actions);
   }]);

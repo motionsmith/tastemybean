@@ -32,6 +32,10 @@ angular
         templateUrl: 'views/signup.html',
         controller: 'SignupCtrl'
       })
+      .when('/rating/:recipeId', {
+        templateUrl: 'views/rate.html',
+        controller: 'RateCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -48,11 +48,24 @@ angular.module('tastemybeanApp')
 
     parse.apiUrl = 'https://api.parse.com/1/';
 
-    parse.pointerFor = function(obj) {
+    // Creates a REST friendly "pointer" object that parse uses to
+    // refer to pointer type columns.
+    parse.pointerFor = function() {
+      var className, objId;
+      if (arguments.length === 1) {
+        //The argument is a parse object. Pointer can be derived from it.
+        className = arguments[0].className;
+        objId = arguments[0].id;
+      } else {
+        // Arguments are the class name and object id.
+        className = arguments[0];
+        objId = arguments[1];
+      }
+
       return {
         '__type': 'Pointer',
-        'className': obj.className,
-        'objectId': obj.id
+        'className': className,
+        'objectId': objId
       };
     };
 

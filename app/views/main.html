@@ -10,7 +10,7 @@
 		<h2>cups not tasted</h2>
 		<ul>
 			<li ng-repeat="recipe in notRated.results">
-				<div>{{recipe.code}}. {{recipe.brew_method.name}}</div>
+				<div><a ng-href="#/rating/{{recipe.objectId}}">{{recipe.code}}. {{recipe.brew_method.name}}</a></div>
 			</li>
 		</ul>
 	</div>
@@ -20,7 +20,7 @@
 		<h2>cups tasted</h2>
 		<ul>
 			<li ng-repeat="rating in myRatings.results">
-				<div>{{rating.recipe.code}}: {{rating.rating_value}} stars</div>
+				<div><a ng-href="#/rating/{{rating.recipe.objectId}}">{{rating.recipe.code}}: {{rating.rating_value}} stars</a></div>
 			</li>
 		</ul>
 	</div>
