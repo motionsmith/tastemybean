@@ -8,12 +8,18 @@
  * Factory in the tastemybeanApp.
  */
 angular.module('tastemybeanApp')
-  .factory('Recipe', ['parse', function (parse) {
-    var Recipe = parse.Object.extend('recipe', {}, {});
-    
-    parse.wrapProperty(Recipe.prototype, 'brew_method');
-    parse.wrapProperty(Recipe.prototype, 'coffee_brand');
-    parse.wrapProperty(Recipe.prototype, 'recipe_name');
+  .factory('Recipe', ['$resource', 'parse', function ($resource, parse) {
 
-    return Recipe;
+  	var actions = {
+  		query: {
+  			method: 'get',
+  			params: {
+  				include: 'brew_method,coffee_brand',
+          order: 'code'
+  			},
+        headers: parse.authHeaders
+  		}
+  	};
+  	
+    return $resource(parse.apiUrl + '/classes/recipe/', {}, actions);
   }]);

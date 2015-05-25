@@ -41,5 +41,34 @@ angular.module('tastemybeanApp')
       });
     };
 
+    parse.authHeaders = {
+          'X-Parse-Application-Id': 'pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN',
+          'X-Parse-REST-API-Key': 'GlkFuqf7B6WDkkpemNUbJbGIOTKGzUcZkSqvpj4Z'
+    };
+
+    parse.apiUrl = 'https://api.parse.com/1/';
+
+    parse.pointerFor = function(obj) {
+      return {
+        '__type': 'Pointer',
+        'className': obj.className,
+        'objectId': obj.id
+      };
+    };
+
+    //Gets all the object ids of the given column in an array of parse objects.
+    //Useful for filtering a query based on  an object's existence in another query.
+    parse.getObjectIds = function(a, column) {
+      if (!a) {
+        return [];
+      }
+      var ids = [];
+      for (var i = 0; i < a.length; i++) {
+        ids.push(a[i][column].id || a[i][column].objectId);
+      }
+
+      return ids;
+    };
+
     return parse;
   }]);
