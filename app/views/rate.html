@@ -1,12 +1,12 @@
 <h1 ng-show="recipe.$resolved">rate cup #{{recipe.code}}</h1>
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<rater value="rating.results[0].rating_value"></rater>
+		<rater value="ratingValue"></rater>
 	</div>
 </div>
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<textarea class="form-control" rows="3" placeholder="comments" ng-model="rating.results[0].comments"></textarea>
+		<textarea class="form-control" rows="3" placeholder="comments" ng-model="comments"></textarea>
 	</div>
 </div>
 <div class="row margin-bottom">
@@ -14,12 +14,11 @@
 		<button class="btn btn-primary btn-block" ng-click="onSubmit()">submit</button>
 	</div>
 	<div class="col-xs-5">
-		<button class="btn btn-default btn-block" ng-click="onCancel()">cancel</button>
+		<button class="btn btn-default btn-block" ng-click="goHome()">cancel</button>
 	</div>
 </div>
-<div class="row">
+<div class="row margin-bottom" ng-show="ratingId">
 	<div class="col-xs-12">
 		<button class="btn btn-danger btn-sm center-block" ng-click="onUnrate()">Unrate</button>
 	</div>
 </div>
-<content-bottom></content-bottom>

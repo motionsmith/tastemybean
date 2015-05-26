@@ -22,6 +22,15 @@ angular.module('tastemybeanApp')
       query: {
         method: 'get',
         headers: parse.authHeaders
+      },
+      update: {
+        method: 'put',
+        url: parse.apiUrl + 'classes/rating/:id',
+        headers: parse.authHeaders  
+      },
+      create: {
+        method: 'post',
+        headers: parse.authHeaders
       }
     };
 
@@ -37,13 +46,13 @@ angular.module('tastemybeanApp')
     }
 
     var resource = $resource(parse.apiUrl + 'classes/rating/', {}, actions);
-    resource.myRatingOfRecipe = function(recipeId) {
+    resource.myRatingOfRecipe = function(recipeId, success, error) {
       var args = [];
       for (var i = 1; i < arguments.length; i++) {
         args[i] = arguments[i];
       }
       var t = whereRecipeIs(recipeId);
-      return this.query(t);
+      return this.query(t, success, error);
     };
 
     return resource;
