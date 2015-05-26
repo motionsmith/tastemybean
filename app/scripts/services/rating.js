@@ -31,6 +31,11 @@ angular.module('tastemybeanApp')
       create: {
         method: 'post',
         headers: parse.authHeaders
+      },
+      unrate: {
+        method: 'delete',
+        url: parse.apiUrl + 'classes/rating/:id',
+        headers: parse.authHeaders
       }
     };
 

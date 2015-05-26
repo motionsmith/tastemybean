@@ -28,12 +28,16 @@ angular.module('tastemybeanApp')
           recipe: parse.pointerFor('recipe', $routeParams.recipeId),
           author: parse.pointerFor(parse.User.current())
         }, onRatingCreated).$promise.then($scope.goHome);
-        
+
       }
     };
 
     $scope.onUnrate = function() {
+      if (!$scope.ratingId) {
+        return;
+      }
 
+      Rating.unrate({id: $scope.ratingId}).$promise.then($scope.goHome);
     };
 
     function onRatingData(results) {
