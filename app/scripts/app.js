@@ -36,10 +36,15 @@ angular
         templateUrl: 'views/rate.html',
         controller: 'RateCtrl'
       })
+      .when('/results', {
+        templateUrl: 'views/results.html',
+        controller: 'ResultsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   }])
-  .run(['parse', function(parse) {
+  .run(['parse', '$rootScope', function(parse, $rootScope) {
     parse.initialize('pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN', 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf');
+    $rootScope.user = parse.User.current();
   }]);

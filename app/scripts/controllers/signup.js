@@ -8,7 +8,7 @@
  * Controller of the tastemybeanApp
  */
 angular.module('tastemybeanApp')
-  .controller('SignupCtrl', ['$scope', 'parse', '$location', function ($scope, parse, $location) {
+  .controller('SignupCtrl', ['$scope', 'parse', '$location', '$rootScope', function ($scope, parse, $location, $rootScope) {
   parse.requireAnonymous();
   
     $scope.signUp = function() {
@@ -22,6 +22,7 @@ angular.module('tastemybeanApp')
         newUser.signUp(null, {
           success: function() {
             //Yay! Let them user the app now.
+            $rootScope.user = newUser;
             $location.path('/');
             $scope.$apply();
           },

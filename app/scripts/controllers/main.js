@@ -9,9 +9,13 @@
  */
 angular.module('tastemybeanApp')
   .controller('MainCtrl', ['$scope', 'parse', '$location', 'Recipe', 'Rating', function ($scope, parse, $location, Recipe, Rating) {
-    $scope.logOut = function() {
-      parse.User.logOut();
-      $location.path('.login');
+    $scope.finish = function() {
+      user.save({finished: true}, {
+        success: function() {
+          $location.path('/results');
+          $scope.$apply();
+        }
+      });
     };
 
     function onParseError(results) {
@@ -35,7 +39,11 @@ angular.module('tastemybeanApp')
 
     var user = parse.requireUser();
     if (user) {
-      $scope.$watch('myRatings.results', getNotRatedRecipes);
-      $scope.myRatings = Rating.mine(function(){}, onParseError);
+      if (!user.get('finished')) {
+        $scope.$watch('myRatings.results', getNotRatedRecipes);
+        $scope.myRatings = Rating.mine(function(){}, onParseError);
+      } else {
+        $location.path('/results');
+      }
     }
   }]);
