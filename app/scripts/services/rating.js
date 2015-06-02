@@ -36,6 +36,15 @@ angular.module('tastemybeanApp')
         method: 'delete',
         url: parse.apiUrl + 'classes/rating/:id',
         headers: parse.authHeaders
+      },
+      myRankedRatings: {
+        method: 'get',
+        params: {
+          include: 'recipe,recipe.brew_method,recipe.coffee_brand',
+          order: '-rating_value',
+          where: JSON.stringify({author: parse.pointerFor(parse.User.current())})
+        },
+        headers: parse.authHeaders
       }
     };
 

@@ -1,1 +1,27 @@
-<p>This is the results view.</p>
+<h1>Results</h1>
+
+<div class="row" ng-show="message">	
+	<div class="col-xs-12">
+		<p class="bg-danger">{{message}}</p>
+	</div>
+</div>
+
+<div class="row>">
+	<div class="col-xs-12">
+		<h2>Your ratings</h2>
+		<p>Ranked from best to worst</p>
+		<ul class="list-unstyled rated-list-item">
+			<li ng-repeat="rating in myRankedRatings.results">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div><span>#{{$index + 1}}<span> <span>{{rating.recipe.recipe_name}}</span></a></div>
+						<div>{{rating.recipe.brew_method.name}} with {{rating.recipe.coffee_brand.name}}</div>
+						<div><rater value="rating.rating_value"></rater></div>
+						<div>group rank: placeholder</div>
+						<div><span>Your comments:</span> <span>{{rating.comments}}</span></div> 
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
