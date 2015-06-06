@@ -1,0 +1,17 @@
+<div ng-controller="GroupResultsCtrl" class="row>">
+	<div class="col-xs-12">
+		<h2>group ratings</h2>
+		<p>ranked from best to worst</p>
+		<ul class="list-unstyled rated-list-item">
+			<li ng-repeat="rating in groupRankedRatings.results">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div><span>#{{$index + 1}}</span><span>{{rating.recipe.recipe_name}}</span><span>{{rating.recipe.code}}</div>
+						<div>{{rating.recipe.brew_method.name}} with {{rating.recipe.coffee_brand.name}}</div>
+						<div><rater value="rating.ratingValue"></rater></div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

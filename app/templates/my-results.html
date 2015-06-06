@@ -1,0 +1,39 @@
+<div ng-controller="MyResultsCtrl">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>your analysis</h2>
+			<h3>origin</h3>
+			<p ng-show="myRankedRatings.preferences.origin === 'single'">You prefer <strong>single-origin</strong> coffee over origin blends. When coffee shopping, buy coffee that displays the farm it came from, rather than a given name such as 'house blend'.</p>
+			<p ng-show="myRankedRatings.preferences.origin === 'blend'">You prefer <strong>coffee blends</strong> over single-origin coffee. Blends can have more complexity and a higher variety of "notes", although a poorly blended coffee may come across as muddled. When coffee shopping, buy coffee that displays a given name such as 'house blend', rather than the farm it came from.</p>
+			<h3>roast</h3>
+			<p ng-show="myRankedRatings.preferences.roast === 'light'">Go for the <strong>light roasts</strong>. Light-roasted coffee preserves the characteristics of its origin, and has the widest spectrum of notes. It tends to be less sweet, less bitter, and more acidic. People who don't prefer light roasts are usually turned off by the heavily acidic flavors. Unfortunately, light roasts are harder to find. Your best bet is to subscribe to a coffee club such as Mustache Coffee.</p>
+			<p ng-show="myRankedRatings.preferences.roast === 'medium'">Go for the <strong>medium roasts</strong>. A medium roast should preserve most of the characteristics of its origin, while not tasting overly "roasted" or burnt. Medium roasts are a good balance if you're trying to avoid overly acidic and overly bitter coffee.</p>
+			<p ng-show="myRankedRatings.preferences.roast === 'dark'">Go for the <strong>dark roasts</strong>. You seem to like "roasted" flavors over the characteristics of a coffee's origin. Although origin character is lost in a dark roast, so is the acidity. Dark roasts tend to be more consistent and are thus prefered for large-batch roasters and most coffee chains. This also makes dark roasts cheaper!</p>
+			<h3>brew</h3>
+			<p ng-show="myRankedRatings.preferences.brew === 'easy'">When making your own coffee, <strong>don’t bother</strong> with the time-consuming brewing methods like Aeropress and pour over. You seem to enjoy <strong>instant coffee</strong> and <strong>standard drip</strong>, so no need to go to any extra effort.</p>
+			<p ng-show="myRankedRatings.preferences.brew === 'hard'">You favor brews that are a bit more <strong>time-consuming</strong>, but also <strong>more rewarding</strong>. Your coffee habit will benefit from more nuanced brewing methods such as pour-over and Aeropress. Consider refining your brewing technique and turn your morning routine into something of a daily meditation.</p>
+			<h3>batch</h3>
+			<p ng-show="myRankedRatings.preferences.batch === 'small'">You have a preference for <strong>specialty and small-batch</strong> coffees. They are more expensive, but it may be worth it. Small batch coffees are often more complex and enjoyable to those who can suss out their profiles.</p>
+			<p ng-show="myRankedRatings.preferences.batch === 'big'">Common, <strong>big-batch</strong> coffees suit you best. Some claim all of them 'taste the same', but on the contrary, these coffees are tried-and-true...and widely available.</p>
+		</div>
+	</div>
+	<div class="row>">
+		<div class="col-xs-12">
+			<h2>your ratings</h2>
+			<p>ranked from best to worst</p>
+			<ul class="list-unstyled rated-list-item">
+				<li ng-repeat="rating in myRankedRatings.results">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div><span>#{{$index + 1}}</span><span>{{rating.recipe.recipe_name}}</span><span>{{rating.recipe.code}}</div>
+							<div>{{rating.recipe.brew_method.name}} with {{rating.recipe.coffee_brand.name}}</div>
+							<div><rater value="rating.rating_value"></rater></div>
+							<!--<div>group rank: placeholder</div>-->
+							<div><span>Your comments:</span> <span>{{rating.comments}}</span></div> 
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -12,19 +12,23 @@ angular.module('tastemybeanApp')
       templateUrl: 'templates/rater.html',
       scope: {
       	rateChanged: '&',
-      	value: '='
+      	value: '=',
+        editable: '='
       },
       replace: true,
       restrict: 'E',
       link: function postLink(scope) {
         scope.$watch('value', function() {
-          //Redraw rating widget.
-          console.log('redraw rating widget to ' + scope.value);
+          //Do something when the rating changes?
         });
 
         scope.onRatingClick = function(index) {
+          if (!scope.editable) {
+            return;
+          }
+          
           if (index !== scope.value) {
-            console.log('rating changed via directive to ' + index);
+            
             scope.value = index;
           }
         };

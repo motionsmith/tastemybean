@@ -9,6 +9,15 @@
  */
 angular.module('tastemybeanApp')
   .controller('ResultsCtrl', ['$scope', '$location', 'parse', 'Rating', function ($scope, $location, parse, Rating) {
+
+    $scope.showMyResults = function() {
+      $scope.tab = 'templates/my-results.html';
+    };
+
+    $scope.showGroupResults = function() {
+      $scope.tab = 'templates/group-results.html';
+    };
+
     var user = parse.requireUser();
     if (user) {
       if (!user.get('finished')) {
@@ -19,4 +28,5 @@ angular.module('tastemybeanApp')
       	});
       }
     }
+    $scope.showMyResults();
   }]);
