@@ -13,14 +13,19 @@ angular.module('tastemybeanApp')
       scope: {
       	rateChanged: '&',
       	value: '=',
-        editable: '='
+        editable: '=',
+        size: '@'
       },
       replace: true,
       restrict: 'E',
-      link: function postLink(scope) {
+      link: function postLink(scope, element, attrs) {
         scope.$watch('value', function() {
           //Do something when the rating changes?
         });
+
+        if (!attrs.size) {
+          attrs.size = '19px'; 
+        }
 
         scope.onRatingClick = function(index) {
           if (!scope.editable) {

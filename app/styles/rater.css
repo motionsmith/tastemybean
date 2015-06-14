@@ -1,13 +1,13 @@
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\000031}}
 .rater {
-  margin: 0px auto 16px auto;
-  width: 272px;
+  /* margin: 0px auto 0 auto; */
+  /* width: auto; */
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ericsmith\/proj\/tastemybean\/app\/styles\/rater\.scss}line{font-family:\000035}}
 .rater .rating-icon {
-  margin: 0 8px;
-  width: 40px;
-  height: 35px;
+  margin: 0 2px;
+  width: 19px;
+  height: 19px;
   display: inline-block;
   cursor: pointer;
 }

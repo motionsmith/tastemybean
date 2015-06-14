@@ -1,13 +1,9 @@
-<h1 ng-show="recipe.$resolved">rate cup #{{recipe.code}}</h1>
-<div class="row margin-bottom">
-	<div class="col-xs-12">
-		<rater value="ratingValue"></rater>
-	</div>
+<h1 ng-show="recipe.$resolved">Rate cup <span ng-style="{'color': recipe.color}" class="code">{{recipe.code}}</span></h1>
+<div class="margin-bottom">
+	<rater value="ratingValue" editable="true" size="25px"></rater>
 </div>
-<div class="row margin-bottom">
-	<div class="col-xs-12">
-		<textarea class="form-control" rows="3" placeholder="comments" ng-model="comments"></textarea>
-	</div>
+<div class="margin-bottom">
+	<textarea class="form-control" rows="3" placeholder="comments" ng-model="comments"></textarea>
 </div>
 <div class="row margin-bottom">
 	<div class="col-xs-7">
@@ -17,8 +13,6 @@
 		<button class="btn btn-default btn-block" ng-click="goHome()">cancel</button>
 	</div>
 </div>
-<div class="row margin-bottom" ng-show="ratingId">
-	<div class="col-xs-12">
-		<button class="btn btn-danger btn-sm center-block" ng-click="onUnrate()">Unrate</button>
-	</div>
+<div class="margin-bottom" ng-show="ratingId">
+	<button class="btn btn-danger btn-sm center-block" ng-click="onUnrate()">Unrate</button>
 </div>
