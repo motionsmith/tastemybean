@@ -1,33 +1,28 @@
 
-<h1>cupping</h1>
-<div class="row" ng-show="message">	
-	<div class="col-xs-12">
-		<p class="bg-danger">{{message}}</p>
+<h1>Cupping</h1>
+<p class="bg-danger">{{message}}</p>
+<h2>Cups not tasted</h2>
+<ul class="list-unstyled">
+	<div class="row">
+		<div ng-repeat="recipe in notRated.results" class="col-xs-6">
+			<a ng-href="#/rating/{{recipe.objectId}}">
+				<li>
+					<div class="cupping-not-tasted"><span class="code" ng-style="{'color': recipe.color}">{{recipe.code}}</span></div>
+				</li>
+			</a>
+		</div>
 	</div>
-</div>
-<div class="row>">
-	<div class="col-xs-12">
-		<h2>cups not tasted</h2>
-		<ul>
-			<li ng-repeat="recipe in notRated.results">
-				<div><a ng-href="#/rating/{{recipe.objectId}}">{{recipe.code}}. {{recipe.brew_method.name}}</a></div>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="row>">
-	<div class="col-xs-12">
-		<h2>cups tasted</h2>
-		<ul>
-			<li ng-repeat="rating in myRatings.results">
-				<div><a ng-href="#/rating/{{rating.recipe.objectId}}">{{rating.recipe.code}}: {{rating.rating_value}} stars</a></div>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-12">
-		<button class="btn btn-primary" ng-click="finish()">i'm done</button>
-	</div>
-</div>
+</ul>
+<h2>Cups tasted</h2>
+<ul class="list-unstyled">
+	<li ng-repeat="rating in myRatings.results">
+		<a ng-href="#/rating/{{rating.recipe.objectId}}">
+			<div class="cupping-tasted">
+				<span class="code" ng-style="{'color': rating.recipe.color}">{{rating.recipe.code}}</span>
+				<rater value="rating.rating_value" editable="false">
+			</div>
+		</a>
+	</li>
+</ul>
+<button class="btn btn-primary btn-block" ng-click="finish()">Done tasting</button>
 <content-bottom></content-bottom>

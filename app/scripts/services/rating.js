@@ -15,7 +15,9 @@ angular.module('tastemybeanApp')
         params: {
           include: 'recipe',
           order: 'createdAt',
-          where: JSON.stringify({author: parse.pointerFor(parse.User.current())})
+          where: function() {
+            return JSON.stringify({author: parse.pointerFor(parse.User.current())});
+          }
         },
         headers: parse.authHeaders
       },
@@ -42,7 +44,9 @@ angular.module('tastemybeanApp')
         params: {
           include: 'recipe,recipe.brew_method,recipe.coffee_brand',
           order: '-rating_value',
-          where: JSON.stringify({author: parse.pointerFor(parse.User.current())})
+          where: function () {
+            JSON.stringify({author: parse.pointerFor(parse.User.current())});
+          }
         },
         headers: parse.authHeaders,
         transformResponse: function(data) {

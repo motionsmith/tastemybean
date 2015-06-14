@@ -1,0 +1,41 @@
+.cupping-not-tasted {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 80px;
+	text-align: center;
+	background-color: #fff;
+	border-bottom-right-radius: 40px;
+	border-bottom-left-radius: 40px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	text-shadow: none;
+
+	.code {
+		position: relative;
+		top: 15px;
+		font-size: 34px;
+		font-weight: 900;
+	}
+}
+
+.cupping-tasted {
+	background-color: #fff;
+	height: 60px;
+	padding-top: 6px;
+	border-radius: 8px;
+	text-shadow: none;
+	margin-top: 10px;
+
+	.rater {
+		display: inline;
+		position: relative;
+		top: -10px;
+	}
+
+	.code {
+		margin-left: 20px;
+		margin-right: 20px;
+		font-size: 34px;
+		font-weight: 900;
+	}
+}

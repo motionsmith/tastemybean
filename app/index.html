@@ -13,7 +13,9 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/rater.css">
+    <link rel="stylesheet" href="styles/cupping.css">
     <!-- endbuild -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300,100' rel='stylesheet' type='text/css'>
   </head>
   <body ng-app="tastemybeanApp">
     <!--[if lt IE 7]>
@@ -21,18 +23,17 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
+    <div class="container-fluid">
       <div class="header">
-        <h1 class="text-muted">Taste My Bean</h1>
+        <img id="logo" src="images/logo.png" />
       </div>
 
-      <div ng-view=""></div>
+      <div class="main-view" ng-view=""></div>
 
       <div class="footer">
-        Made by a computer. Minor guidance by Eric Smith. <logout-button></logout-button>
+        Made by a computer. Minor guidance by Eric Smith. <br /><logout-button></logout-button>
       </div>
     </div>
-
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -73,7 +74,6 @@
         <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/directives/contentbottom.js"></script>
         <script src="scripts/services/recipe.js"></script>
-        <script src="scripts/services/brewmethod.js"></script>
         <script src="scripts/services/rating.js"></script>
         <script src="scripts/controllers/rate.js"></script>
         <script src="scripts/directives/rater.js"></script>
