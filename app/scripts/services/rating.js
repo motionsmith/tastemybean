@@ -28,7 +28,7 @@ angular.module('tastemybeanApp')
       update: {
         method: 'put',
         url: parse.apiUrl + 'classes/rating/:id',
-        headers: parse.authHeaders  
+        headers: parse.authHeaders
       },
       create: {
         method: 'post',
@@ -53,6 +53,14 @@ angular.module('tastemybeanApp')
           var response = angular.fromJson(data);
 
           var originPreference, roastPreference, brewPreference, batchPreference, i, rating;
+
+          //convert any NaN ratings to zero.
+          for (i = 0; i < response.results.length; i++) {
+            rating = response.results[i];
+            if (isNaN(rating.rating_value)) {
+              rating.rating_value = 0;
+            }
+          }
 
           //Determine origin preference
           var singleScore = 0;
@@ -175,14 +183,24 @@ angular.module('tastemybeanApp')
           //Transform the server response to json.
           var response = angular.fromJson(data);
 
+          var i, rating;
+
+          //convert any NaN ratings to zero.
+          for (i = 0; i < response.results.length; i++) {
+            rating = response.results[i];
+            if (isNaN(rating.rating_value)) {
+              rating.rating_value = 0;
+            }
+          }
+
           //Create only one averaged "rating" object per recipe, via a hashtable with the recipe ID as the key.
           var a = {}, groupRating;
-          for (var i = 0; i < response.results.length; i++) {
-            var result = response.results[i];
-            groupRating = a[result.recipe.objectId] || { recipe: result.recipe, ratingCount: 0, ratingSum: 0 };
+          for (i = 0; i < response.results.length; i++) {
+            rating = response.results[i];
+            groupRating = a[rating.recipe.objectId] || { recipe: rating.recipe, ratingCount: 0, ratingSum: 0 };
             groupRating.ratingCount++;
-            groupRating.ratingSum += result.rating_value;
-            a[result.recipe.objectId] = groupRating;
+            groupRating.ratingSum += rating.rating_value;
+            a[rating.recipe.objectId] = groupRating;
           }
 
           //Turn the hashtable into an array of ratings.
