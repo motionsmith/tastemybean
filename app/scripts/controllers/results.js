@@ -23,9 +23,7 @@ angular.module('tastemybeanApp')
       if (!user.get('finished')) {
         $location.path('/');
       } else {
-      	$scope.myRankedRatings = Rating.myRankedRatings(function() {
-      		console.log('got ranked ratings');
-      	});
+      	$scope.myRankedRatings = Rating.myRankedRatings(function() {});
       }
     }
     $scope.showMyResults();

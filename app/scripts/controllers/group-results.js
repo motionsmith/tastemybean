@@ -10,7 +10,5 @@
 angular.module('tastemybeanApp')
   .controller('GroupResultsCtrl', ['$scope', 'Rating', function ($scope, Rating) {
 
-    $scope.groupRankedRatings = Rating.groupRankedRatings(function() {
-      console.log('got group-ranked ratings');
-    });
+    $scope.groupRankedRatings = Rating.groupRankedRatings(function() {});
   }]);

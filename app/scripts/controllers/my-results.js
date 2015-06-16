@@ -10,7 +10,5 @@
 angular.module('tastemybeanApp')
   .controller('MyResultsCtrl', ['$scope', 'Rating', function ($scope, Rating) {
 
-    $scope.myRankedRatings = Rating.myRankedRatings(function() {
-      console.log('got my ranked ratings');
-    });
+    $scope.myRankedRatings = Rating.myRankedRatings(function() {});
   }]);

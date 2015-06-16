@@ -10,11 +10,10 @@
 angular.module('tastemybeanApp')
   .controller('SignupCtrl', ['$scope', 'parse', '$location', '$rootScope', function ($scope, parse, $location, $rootScope) {
   parse.requireAnonymous();
-  
+
     $scope.signUp = function() {
       if (!!$scope.email && !!$scope.password) {
         $scope.message = '';
-        console.log('sign up with ' + $scope.email + ' & ' + $scope.password);
         var newUser = new parse.User();
         newUser.set('username', $scope.email);
         newUser.set('email', $scope.email);
