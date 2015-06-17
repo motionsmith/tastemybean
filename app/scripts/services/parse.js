@@ -8,7 +8,7 @@
  * Factory in the tastemybeanApp.
  */
 angular.module('tastemybeanApp')
-  .factory('parse', ['$window', '$location', function ($window, $location) {
+  .factory('parse', ['$window', '$location', 'parseAppId', 'parseJsKey', function ($window, $location, parseAppId, parseJsKey) {
 
   	var parse = $window.Parse;
 
@@ -42,8 +42,8 @@ angular.module('tastemybeanApp')
     };
 
     parse.authHeaders = {
-          'X-Parse-Application-Id': 'pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN',
-          'X-Parse-REST-API-Key': 'GlkFuqf7B6WDkkpemNUbJbGIOTKGzUcZkSqvpj4Z'
+          'X-Parse-Application-Id': parseAppId,
+          'X-Parse-REST-API-Key': parseJsKey
     };
 
     parse.apiUrl = 'https://api.parse.com/1/';
