@@ -21,11 +21,32 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var ngConstantConfig = {
+    options: {
+      name: 'tastemybeanApp',
+      dest: '<%= yeoman.app %>/scripts/config.js',
+      deps: false,
+    },
+    dev: {
+      values: {
+        parseAppId: 'pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN',
+        parseJsKey: 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf'
+      }
+    },
+    dist: {
+      values: {
+        parseAppId: 'nRkV1wU6jFgdel7eqmTMMislzvEloK4dlTmbhPvM',
+        parseJsKey: 'yfEc4IQRez4vPqdNb2OT9ilrB080mtAcTyHdSNqp'
+      }
+    }
+  };
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
     yeoman: appConfig,
+    ngconstant: ngConstantConfig,
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -397,6 +418,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:dev',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -420,6 +442,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

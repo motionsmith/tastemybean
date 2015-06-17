@@ -44,7 +44,7 @@ angular
         redirectTo: '/'
       });
   }])
-  .run(['parse', '$rootScope', function(parse, $rootScope) {
-    parse.initialize('pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN', 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf');
+  .run(['parse', '$rootScope', 'parseAppId', 'parseJsKey', function(parse, $rootScope, parseAppId, parseJsKey) {
+    parse.initialize(parseAppId, parseJsKey);
     $rootScope.user = parse.User.current();
   }]);
