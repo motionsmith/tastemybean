@@ -4,4 +4,6 @@ angular.module('tastemybeanApp')
 
 .value('parseJsKey', 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf')
 
+.value('parseRestKey', 'GlkFuqf7B6WDkkpemNUbJbGIOTKGzUcZkSqvpj4Z')
+
 ;

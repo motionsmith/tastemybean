@@ -30,13 +30,15 @@ module.exports = function (grunt) {
     dev: {
       values: {
         parseAppId: 'pTORFGPqJa0rpfAaRcjnOiUfLg3JvDI0d8YtGaWN',
-        parseJsKey: 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf'
+        parseJsKey: 'JOZ1HwpvCK24uGJ4JBFeYzNy6bi6FriunirFmwIf',
+        parseRestKey: 'GlkFuqf7B6WDkkpemNUbJbGIOTKGzUcZkSqvpj4Z'
       }
     },
     dist: {
       values: {
         parseAppId: 'nRkV1wU6jFgdel7eqmTMMislzvEloK4dlTmbhPvM',
-        parseJsKey: 'yfEc4IQRez4vPqdNb2OT9ilrB080mtAcTyHdSNqp'
+        parseJsKey: 'yfEc4IQRez4vPqdNb2OT9ilrB080mtAcTyHdSNqp',
+        parseRestKey: 'J4Rqa9uLRu2mh3zNkJuXPMUtdlIdP28usWorCWYq'
       }
     }
   };
