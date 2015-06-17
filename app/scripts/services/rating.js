@@ -45,7 +45,7 @@ angular.module('tastemybeanApp')
           include: 'recipe,recipe.brew_method,recipe.coffee_brand',
           order: '-rating_value',
           where: function () {
-            JSON.stringify({author: parse.pointerFor(parse.User.current())});
+            return JSON.stringify({author: parse.pointerFor(parse.User.current())});
           }
         },
         headers: parse.authHeaders,
